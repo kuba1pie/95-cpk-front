@@ -1,18 +1,24 @@
 <template>
-  <ul>
-    <li v-for="item in data" :key="item.numer_urzad">
-      {{ item.data_wplywu_wniosku.split(' ')[0] }}
-      {{ item.data_wydania_decyzji.split(' ')[0] }}
-      {{ item.miasto }}
-      {{ item.ulica }}
-      {{ item.nr_domu }}
-      <a
-        :href="'https://mapy.geoportal.gov.pl/imap/Imgp_2.html?identifyParcel=' + item.jednosta_numer_ew + '.' + getObrebr(item.obreb_numer) + '.' + item.numer_dzialki">{{
-          item.numer_dzialki }}</a> 
-      <a
-        :href="'https://polska.e-mapa.net/?identifyParcel=' + item.jednosta_numer_ew + '.' + getObrebr(item.obreb_numer) + '.' + item.numer_dzialki">GeoSystem</a>
-    </li>
-  </ul>
+  <div class="wrapper">
+    <div v-for="item in data" :key="item.numer_urzad" class="flex flex-row">
+      <div class="m-r5">
+        {{ item.data_wplywu_wniosku.split(' ')[0] }} -
+        {{ item.data_wydania_decyzji.split(' ')[0] }}
+      </div>
+      <div class="w-50">
+        {{ item.miasto }}
+        {{ item.ulica }}
+        {{ item.nr_domu }}
+      </div>
+      <div class="w-20 flex">
+        <a class="m-r10"
+          :href="'https://mapy.geoportal.gov.pl/imap/Imgp_2.html?identifyParcel=' + item.jednosta_numer_ew + '.' + getObrebr(item.obreb_numer) + '.' + item.numer_dzialki">{{
+            item.numer_dzialki }}</a>
+        <a
+          :href="'https://polska.e-mapa.net/?identifyParcel=' + item.jednosta_numer_ew + '.' + getObrebr(item.obreb_numer) + '.' + item.numer_dzialki">GeoSystem</a>
+      </div>
+    </div>
+  </div>
 </template>
 
 <script setup>
