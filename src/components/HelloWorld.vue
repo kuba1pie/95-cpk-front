@@ -22,14 +22,17 @@
         item.numer_dzialki }}</div>
       <div class="md:hidden">
         <a class="w-1/2"
-          :href="'https://mapy.geoportal.gov.pl/imap/Imgp_2.html?identifyParcel=' + item.jednosta_numer_ew + '.' + getObrebr(item.obreb_numer) + '.' + item.numer_dzialki">{{
+          :href="'https://mapy.geoportal.gov.pl/imap/Imgp_2.html?identifyParcel=' + item.jednosta_numer_ew + '.' + getObrebr(item.obreb_numer) + '.' + item.numer_dzialki"
+          :target="targetBlank.valueOf ? '_blank' : '_self'" rel="noopener noreferrer nofollow">{{
             item.numer_dzialki }}</a>
       </div>
       <div class="hidden md:flex justify-between">
         <a class="w-1/2"
-          :href="'https://mapy.geoportal.gov.pl/imap/Imgp_2.html?identifyParcel=' + item.jednosta_numer_ew + '.' + getObrebr(item.obreb_numer) + '.' + item.numer_dzialki">Geoportal</a>
+          :href="'https://mapy.geoportal.gov.pl/imap/Imgp_2.html?identifyParcel=' + item.jednosta_numer_ew + '.' + getObrebr(item.obreb_numer) + '.' + item.numer_dzialki"
+          :target="targetBlank.valueOf ? '_blank' : '_self'" rel="noopener noreferrer nofollow">Geoportal</a>
         <a class="w-1/2 hidden md:block"
-          :href="'https://polska.e-mapa.net/?identifyParcel=' + item.jednosta_numer_ew + '.' + getObrebr(item.obreb_numer) + '.' + item.numer_dzialki">GeoSystem</a>
+          :href="'https://polska.e-mapa.net/?identifyParcel=' + item.jednosta_numer_ew + '.' + getObrebr(item.obreb_numer) + '.' + item.numer_dzialki"
+          :target="targetBlank.valueOf ? '_blank' : '_self'" rel="noopener noreferrer nofollow">GeoSystem</a>
       </div>
     </div>
     <div class="description mt-10">
@@ -45,6 +48,8 @@
 import { ref, onMounted } from 'vue'
 
 const items = ref([])
+
+let targetBlank = ref(true)
 
 import data from '../cpkResult.json'
 
@@ -77,5 +82,4 @@ onMounted(async () => {
   .wrapper .row {
     grid-template-columns: 20px 100px 100px 1fr 200px 250px;
   }
-}
-</style>
+}</style>
