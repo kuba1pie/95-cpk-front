@@ -6,6 +6,7 @@
       <div class="hidden md:block">Data wpływu</div>
       <div>Data wydania</div>
       <div>Adres</div>
+      <div class="hidden md:block">Nr pozwolenia</div>
       <div class="hidden md:block">Działka</div>
       <div>Mapa</div>
     </div>
@@ -18,6 +19,7 @@
         {{ item.ulica }}
         {{ item.nr_domu }}
       </div>
+      <div class="hidden md:block">{{ item.numer_decyzji_urzedu }}</div>
       <div class="hidden md:block">{{ item.jednosta_numer_ew + '.' + getObrebr(item.obreb_numer) + '.' +
         item.numer_dzialki }}</div>
       <div class="md:hidden">
@@ -80,6 +82,6 @@ onMounted(async () => {
 
 @media screen and (min-width: 768px) {
   .wrapper .row {
-    grid-template-columns: 20px 100px 100px 1fr 200px 250px;
+    grid-template-columns: 20px 100px 100px 1fr 150px 150px 250px;
   }
 }</style>
