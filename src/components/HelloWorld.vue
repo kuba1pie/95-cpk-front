@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper flex flex-col text-center">
-    <div class="title mb-10">Pozwolenia wydane dla CPK (liczba: {{ data.length }} )</div>
+    <div class="title mb-10">Pozwolenia wydane dla CPK (liczba: {{ data.length }})</div>
     <div class="row">
       <div class="index">L.p.</div>
       <div class="hidden md:block">Data wpływu</div>
@@ -11,7 +11,7 @@
       <div>Mapa</div>
     </div>
     <div v-for="(item, index) in sort()" :key="item.numer_urzad" class="row" :class="{ busted: isBusted(item) }">
-      <div>{{ index + 1 }}</div>
+      <div>{{ index + 1 }}.</div>
       <div class="hidden md:block">{{ item.data_wplywu_wniosku.split(' ')[0] }} </div>
       <div>{{ item.data_wydania_decyzji.split(' ')[0] }}</div>
       <div>
@@ -33,16 +33,19 @@
       </div>
     </div>
     <div class="wrapper mt-10">
-      <div class="title mb-10">Pozostałe wyburzenia</div>
-      <div class="row">
+      <div class="title mb-10">Pozostałe wyburzenia (ilczba: {{ notListed.length }})</div>
+      <div class="row-rest">
         <div class="index">L.p.</div>
+        <div>Działka</div>
         <div>Mapa</div>
       </div>
-      <div v-for="(item, index) in notListed" class="busted flex justify-between">
-        <div class="index">{{ index+1 }}</div>
+      <div v-for="(item, index) in notListed" class="busted row-rest">
+        <div class="index">{{ index + 1 }}.</div>
         <div class="item">{{ item }}</div>
-        <div class="justify-between">
+        <div>
           <a :href="geoportalUrl + item" :target="target" rel="noopener noreferrer nofollow">Geoportal</a>
+        </div>
+        <div>
           <a :href="geosystemUrl + item" :target="target" rel="noopener noreferrer nofollow">GeoSystem</a>
         </div>
       </div>
@@ -91,6 +94,13 @@ function sort() {
   grid-template-columns: 20px 100px 1fr 100px;
   border-bottom: 1px solid gray;
 }
+
+.wrapper .row-rest {
+  display: grid;
+  grid-template-columns: 50px 1fr 125px 125px;
+  border-bottom: 1px solid gray;
+}
+
 
 @media screen and (min-width: 768px) {
   .wrapper .row {
