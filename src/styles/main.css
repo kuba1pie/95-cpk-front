@@ -1,0 +1,24 @@
+
+.wrapper .row {
+  display: grid;
+  grid-template-columns: 20px 100px 1fr 100px;
+  border-bottom: 1px solid gray;
+}
+
+.wrapper .row-rest {
+  display: grid;
+  grid-template-columns: 50px 1fr auto auto auto;
+  gap: 16px;
+  border-bottom: 1px solid gray;
+}
+
+
+@media screen and (min-width: 768px) {
+  .wrapper .row {
+    grid-template-columns: 20px 100px 100px 1fr 150px 150px 250px;
+  }
+}
+
+.busted {
+  color: red;
+}

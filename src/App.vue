@@ -1,7 +1,19 @@
 <script setup>
-import HelloWorld from './components/HelloWorld.vue'
+import Registred from './components/Registred.vue'
+import NotListed from './components/NotListed.vue'
+import Wnioski from './components/Wnioski.vue'
 </script>
 
 <template>
-  <HelloWorld msg="Vite + Vue" />
+  <div class="my-20">
+    <Registred />
+    <NotListed />
+    <Wnioski />
+    <div class="description mt-10">
+      Lista zawiera pozwolenia dostępne na https://wyszukiwarka.gunb.gov.pl/pobranie.html
+    </div>
+    <div class="description mt-10">
+      Aktualizacja: 20.06.2023
+    </div>
+  </div>
 </template>

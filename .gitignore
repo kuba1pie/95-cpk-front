@@ -10,6 +10,13 @@ lerna-debug.log*
 node_modules
 dist
 dist-ssr
+.storybook
+src/stories
+cypress
+mockoon
+test
+cypress.config.js
+storybook-static
 *.local
 
 # Editor directories and files

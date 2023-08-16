@@ -6,4 +6,11 @@ import UnoCSS from 'unocss/vite'
 export default defineConfig({
   plugins: [vue(),
   UnoCSS(),],
+  test: {
+    include: ['src/test/**/*.test.ts'],
+    environment: 'jsdom',
+    deps: {
+      inline: ['@vue', '@vueuse', 'vue-demi'],
+    },
+  },
 })
