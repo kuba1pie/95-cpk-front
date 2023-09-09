@@ -7,7 +7,8 @@
         <div>Działka</div>
         <div>Mapa</div>
       </div>
-      <div v-for="(item, index) in WNIOSKI" class="row-rest">
+      <div v-for="(item, index) in WNIOSKI" class="row-rest"
+        :class="{ considered: wydanoDlaWniosku(item), pozostale: pozostaleDlaWniosku(item) }">
         <div class="index">{{ index + 1 }}.</div>
         <div class="item">{{ item }}</div>
         <div class="item">{{ getObrebName(item) }}</div>
@@ -27,7 +28,7 @@
 
 <script setup>
 import { useCpk } from '../composables/cpk.ts'
-const { URL_GEOPORTAL, URL_GEOSYSTEM, target, getObrebName, WNIOSKI } = useCpk()
+const { URL_GEOPORTAL, URL_GEOSYSTEM, target, getObrebName, WNIOSKI, wydanoDlaWniosku, pozostaleDlaWniosku } = useCpk()
 
 
 const getWies = (item) => item.split(".")[1];

@@ -13,7 +13,7 @@ import Wnioski from './components/Wnioski.vue'
       Lista zawiera pozwolenia dostępne na https://wyszukiwarka.gunb.gov.pl/pobranie.html
     </div>
     <div class="description mt-10">
-      Aktualizacja: 20.06.2023
+      Aktualizacja: 09.09.2023
     </div>
   </div>
 </template>
