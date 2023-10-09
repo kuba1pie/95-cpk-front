@@ -1,6 +1,7 @@
 <template>
   <div class="wrapper flex flex-col text-center">
-    <div class="title mb-10">Pozwolenia wydane dla CPK (liczba: {{ DATA.length }})</div>
+    <div class="title">Pozwolenia wydane dla CPK (liczba: {{ CPKRESULT.length }})</div>
+    <div class="title busted mb-10">Wyburzono (liczba: {{ bustedRegistred.length }})</div>
     <div class="row">
       <div class="index">L.p.</div>
       <div class="hidden md:block">Data wpływu</div>
@@ -38,9 +39,10 @@
 
 <script setup>
 import { useCpk } from '../composables/cpk.ts'
-const { URL_GEOPORTAL, URL_GEOSYSTEM, getParcel, DATA, BUSTED, sort, target } = useCpk('...')
-
+const { URL_GEOPORTAL, URL_GEOSYSTEM, CPKRESULT, getParcel, BUSTED, sort, target, arrayIntersection } = useCpk('...')
 const isBusted = (parcelId) => BUSTED.some(parcel => parcel === getParcel(parcelId));
+const listOfParcelsFromResults = CPKRESULT.map((x) => getParcel(x))
+const bustedRegistred = arrayIntersection(listOfParcelsFromResults, BUSTED)
 
 </script>
 

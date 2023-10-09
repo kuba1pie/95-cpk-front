@@ -30,3 +30,11 @@
 .pozostale {
   color: blue;
 }
+
+.hideConsidered .considered{
+  display: none;
+}
+
+.obrebName {
+  text-transform: capitalize;
+}

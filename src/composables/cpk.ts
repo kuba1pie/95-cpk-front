@@ -3,7 +3,6 @@ import CPKRESULT from '../assets/cpkResult.json'
 import BUSTED from '../assets/busted.json'
 import NOTLISTED from '../assets/notListed.json'
 import WNIOSKI from '../assets/wnioski.json'
-import TERYT from '../assets/teryt.json'
 
 export const useCpk = () => {
   const user = reactive({
@@ -16,7 +15,7 @@ export const useCpk = () => {
   const URL_GEOSYSTEM = 'https://polska.e-mapa.net/?identifyParcel='
   const getObreb = (shortObreb: number) => shortObreb ? shortObreb.toString().padStart(4, "0") : '';
   const getParcel = (item) => item.jednosta_numer_ew + '.' + getObreb(item.obreb_numer) + '.' + item.numer_dzialki;
-  const getObrebName = (terc) => getWiesName(terc)  + ", " +powiaty.find(({ number }) => number === terc.substring(0, 4))?.name + ", gm. " + getGmina(terc);
+  const getObrebName = (terc) => getWiesName(terc).toLowerCase() + ", " + powiaty.find(({ number }) => number === terc.substring(0, 4))?.name + ", gm. " + getGmina(terc);
 
   const getGmina = (terc) => gminy[terc.split('.')[0]]
   const getWiesId = (terc) => terc.split('.')[1]
@@ -77,6 +76,7 @@ export const useCpk = () => {
   const Baranow = {
     "0005": "Buszyce",
     "0018": "Stanisławów",
+    "0020": "Strumiany",
     "0021": "Wyczółki",
   }
   const powiaty = [
@@ -98,11 +98,19 @@ export const useCpk = () => {
   let targetBlank = ref(true)
   const target = () => targetBlank.valueOf() ? '_blank' : '_self';
 
+  
+  function arrayIntersection(a, b) {
+    return a.filter(x => b.includes(x));
+  }
+  function arrayDiv(a, b) {
+    return a.filter(x => !b.includes(x));
+  }
   const wydanoDlaWniosku = (dzialka: string) => CPKRESULT.map(result => getParcel(result)).find(i => i === dzialka);
   const pozostaleDlaWniosku = (dzialka: string) => NOTLISTED.map(result => getParcel(result)).find(i => i === dzialka);
 
   return {
     user,
+    arrayDiv,
     wishlist,
     wydanoDlaWniosku,
     pozostaleDlaWniosku,
@@ -113,9 +121,10 @@ export const useCpk = () => {
     getObrebName,
     sort,
     target,
-    DATA: CPKRESULT,
     BUSTED,
+    CPKRESULT,
     NOTLISTED,
-    WNIOSKI
+    WNIOSKI,
+    arrayIntersection
   }
 }

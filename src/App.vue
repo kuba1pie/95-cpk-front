@@ -10,10 +10,11 @@ import Wnioski from './components/Wnioski.vue'
     <NotListed />
     <Wnioski />
     <div class="description mt-10">
-      Lista zawiera pozwolenia dostępne na https://wyszukiwarka.gunb.gov.pl/pobranie.html
+      Lista zawiera pozwolenia dostępne na https://wyszukiwarka.gunb.gov.pl/pobranie.html<br>
+      Pod tym linkiem nie znaleziono wyników z powiatu grodziskiego.
     </div>
     <div class="description mt-10">
-      Aktualizacja: 23.09.2023
+      Aktualizacja: 09.10.2023
     </div>
   </div>
 </template>
